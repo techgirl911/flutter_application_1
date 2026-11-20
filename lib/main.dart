@@ -17,8 +17,12 @@ class OverflowApp extends StatelessWidget {
           padding: EdgeInsets.all(16),
           child: Row(
             children: [
-              Text(
-                'A very very very very very very very veryvery very very very very very very very long title for one line',
+              Expanded(
+                child: Text(
+                  'A very very very very very very very very very very very very '
+                  'very very very very very very very very very very very very '
+                  'very very very very very very very very long title for one line',
+                ),
               ),
               Icon(Icons.star),
             ],
