@@ -25,3 +25,4 @@ A long `Text` in a `Row` caused yellow and black stripes, because a Row does not
    
    ![OVER FLOW EROR](<docs/Screenshot 2026-11-20 232722.png>)
     ![WHEN I FIXED IT](<docs/Screenshot 2026-11-20 233318.png>)
+    ![inspector screenshot showing size of icon](docs/inspector.png)
