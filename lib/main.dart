@@ -1,74 +1,57 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const CardApp());
+void main() => runApp(const ListApp());
 
-class CardApp extends StatelessWidget {
-  const CardApp({super.key});
+// The data: one class, one object per row
+class Item {
+  const Item(this.name, this.detail, this.price);
+
+  final String name;
+  final String detail;
+  final int price;
+}
+
+class ListApp extends StatelessWidget {
+  const ListApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 72, 0, 150),
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
       ),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Profile')),
-        body: const Padding(
-          padding: EdgeInsets.all(16),
-          child: ProfileCard(
-            name: 'Amina Ngo',
-            role: 'Farmer, Mbalmayo',
-            phone: '+237 6 00 00 00 00',
-          ),
-        ),
-      ),
+      home: const ItemListScreen(),
     );
   }
 }
 
-class ProfileCard extends StatelessWidget {
-  const ProfileCard({
-    super.key,
-    required this.name,
-    required this.role,
-    required this.phone,
-  });
-
-  final String name;
-  final String role;
-  final String phone;
+class ItemListScreen extends StatelessWidget {
+  const ItemListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return Card(
-      child: Padding(
+    const items = [
+      Item('Fresh mangoes', 'obili quater', 750),
+      Item('Plantains', 'messasi market', 500),
+      Item('Pineapples', 'Bastos supermarket', 400),
+    ];
+
+    return Scaffold(
+      appBar: AppBar(title: const Text('Market')),
+      body: ListView.builder(
         padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            const CircleAvatar(radius: 32, child: Icon(Icons.person, size: 32)),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(name, style: textTheme.titleLarge),
-                  Text(role),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      const Icon(Icons.phone, size: 16),
-                      const SizedBox(width: 4),
-                      Text(phone),
-                    ],
-                  ),
-                ],
-              ),
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          final item = items[index];
+          return Card(
+            child: ListTile(
+              leading: const CircleAvatar(child: Icon(Icons.eco)),
+              title: Text(item.name),
+              subtitle: Text(item.detail),
+              trailing: Text('${item.price} XAF'),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
