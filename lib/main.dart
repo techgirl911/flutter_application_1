@@ -34,6 +34,7 @@ class ItemListScreen extends StatelessWidget {
       Item('Fresh mangoes', 'obili quater', 750),
       Item('Plantains', 'messasi market', 500),
       Item('Pineapples', 'Bastos supermarket', 400),
+      Item('Pears', 'Komtu market', 500),
     ];
 
     return Scaffold(
@@ -45,7 +46,7 @@ class ItemListScreen extends StatelessWidget {
           final item = items[index];
           return Card(
             child: ListTile(
-              leading: const CircleAvatar(child: Icon(Icons.eco)),
+              leading: const CircleAvatar(child: Icon(Icons.shopping_cart)),
               title: Text(item.name),
               subtitle: Text(item.detail),
               trailing: Text('${item.price} XAF'),
