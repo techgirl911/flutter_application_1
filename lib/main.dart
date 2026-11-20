@@ -9,7 +9,9 @@ class CardApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 72, 0, 150),
+        ),
       ),
       home: Scaffold(
         appBar: AppBar(title: const Text('Profile')),
